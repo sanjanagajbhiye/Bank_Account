@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Bank_Account.Models.AccountOpeningFormTable>
+
+@{
+    ViewData["Title"] = "Index";
+    var genderDict = ViewBag.GenderDict as Dictionary<string, string>;
+    var titleDict = ViewBag.TitleDict as Dictionary<string, string>;
+    var accDict = ViewBag.AccDict as Dictionary<string, string>;
+    var branchDict = ViewBag.BranchDict as Dictionary<string, string>;
+    var currentDate = ViewBag.CurrentDate;
+}
+
+<style>
+    /* Add CSS styles for table borders */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 2px solid #000; /* Adds a border to table cells */
+        padding: 8px; /* Adds padding inside cells */
+        text-align: left; /* Aligns text to the left */
+
+    }
+    td{
+        text-decoration:solid;
+    }
+
+    th {
+        background-color: #f2f2f2; /* Light gray background for header */
+        text-align:center;
+    }
+    /* Header spanning all columns */
+    .header-title {
+        text-align: center; /* Center the text */
+        font-size: 18px; /* Larger font size for the header */
+        font-weight: bold; /* Bold text */
+    }
+</style>
+
+
+<table class="table">
+    <thead style="color:#000000;background-color:#BCF7AB;font-weight:300;">
+        <tr>
+            <th colspan="12" class="header-title">Bank Account Opening Form List To Day @currentDate</th>
+        </tr>
+        <tr>
+            <th>
+                Date
+                <br />
+                Time
+            </th>
+            <th>
+                Form Number
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+               First Name
+            </th>
+            <th>
+               Middle Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Sex
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Mobile No. 
+            </th>
+            <th>
+                E-Mail
+            </th>
+            <th>
+                Branch
+            </th> 
+            <th>
+                Account Type
+            </th>
+        </tr>
+    </thead>
+    <tbody style="color:#000000;background-color:#FFFFFF;font-weight:200;">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormFillingDate)
+                <br>
+                    @if (item.FormFillingTime.HasValue)
+                    {
+                        <span>@item.FormFillingTime.Value.ToString("hh\\:mm\\:ss")</span>
+                    }
+                    else
+                    {
+                        <span>Not specified</span>
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormNumber)
+            </td>
+            <td>
+
+                    @if (titleDict.ContainsKey(item.CustSex.ToString()))
+                    {
+                        <span>@titleDict[item.CustTitle.ToString()]</span>
+                    }
+                    else
+                    {
+                        <span>Unknown</span>
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustMiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustLastName)
+            </td>
+            <td>
+                    @if (genderDict.ContainsKey(item.CustSex.ToString()))
+                    {
+                        <span>@genderDict[item.CustSex.ToString()]</span>
+                    }
+                    else
+                    {
+                        <span>Unknown</span>
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustMobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustEmailId)
+            </td>
+            <td>
+
+                    @if (branchDict.ContainsKey(item.CustBranchCode.ToString()))
+                    {
+                        <span>@branchDict[item.CustBranchCode.ToString()]</span>
+                    }
+                    else
+                    {
+                        <span>Unknown</span>
+                    }
+            </td>
+            <td>
+                    @if (accDict.ContainsKey(item.CustAccountType.ToString()))
+                    {
+                        <span>@accDict[item.CustAccountType.ToString()]</span>
+                    }
+                    else
+                    {
+                        <span>Unknown</span>
+                    }
+            </td>
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary" style="align-content:center;">New</a>

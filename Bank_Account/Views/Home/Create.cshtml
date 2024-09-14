@@ -1,0 +1,276 @@
+﻿@model Bank_Account.Models.AccountOpeningFormTable
+
+@{
+    ViewData["Title"] = "Create";
+    var currentDate = ViewBag.currentDate;
+    var currentTime = ViewBag.currentTime;
+    var FormNumber = ViewBag.Formnumber;
+}
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+                <label asp-for="FormNumber" class="control-label"></label>
+                <input asp-for="FormNumber" class="form-control" />
+                <span asp-validation-for="FormNumber" class="text-danger"></span>
+            </div> *@
+            @* <div class="form-group">
+                <label asp-for="FormFillingDate" class="control-label"></label>
+                <input asp-for="FormFillingDate" class="form-control" />
+                <span asp-validation-for="FormFillingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FormFillingTime" class="control-label"></label>
+                <input asp-for="FormFillingTime" class="form-control" />
+                <span asp-validation-for="FormFillingTime" class="text-danger"></span>
+            </div> *@
+            <div class="row" style="text-align:center;"> 
+                <h4 class="form-group">Account Opening Form</h4>
+                <br />
+                <h4 class="form-group"> FormNumber: @FormNumber Date: @currentDate Time: @currentTime</h4>
+            </div>
+            <br />
+            <div class="row">
+            <div class="col-md-3 form-group">
+                <label asp-for="CustTitle" class="control-label">Title</label>
+                    <select id="titleId"  asp-for="CustTitle" class="form-control" asp-items="ViewBag.TitleList">
+                    <option value="">-- Select Title --</option>
+                </select>
+                <span asp-validation-for="CustTitle" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 form-group">
+                <label asp-for="CustFirstName" class="control-label">First Name</label>
+                <input asp-for="CustFirstName" class="form-control" />
+                <span asp-validation-for="CustFirstName" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 form-group">
+                <label asp-for="CustMiddleName" class="control-label">Middle Name</label>
+                <input asp-for="CustMiddleName" class="form-control" />
+                <span asp-validation-for="CustMiddleName" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 form-group">
+                <label asp-for="CustLastName" class="control-label">Last Name</label>
+                <input asp-for="CustLastName" class="form-control" />
+                <span asp-validation-for="CustLastName" class="text-danger"></span>
+            </div>
+    </div>
+    <br />
+    <div class="row">
+            <div class="col-md-4 form-group">
+                <label asp-for="CustSex" class="control-label">Gender</label>
+                <select id="genderId" asp-for="CustSex" class="form-control" asp-items="ViewBag.GenderList">
+                    <option value="">-- Select Gender --</option>
+                </select>
+                <span asp-validation-for="CustSex" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="CustDateOfBirth" class="control-label">Date Of Birth</label>
+                <input id="dobId" asp-for="CustDateOfBirth" class="form-control" type="date"/>
+                <span asp-validation-for="CustDateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="CustAge" class="control-label">Age</label>
+                <input id="ageId" asp-for="CustAge" class="form-control"/>
+                <span asp-validation-for="CustAge" class="text-danger"></span>
+            </div>
+    </div>
+    <br />
+    <div class="row">
+            <div class="col-md-4 form-group">
+                <label asp-for="CustStdCode" class="control-label">STD Code</label>
+                <input asp-for="CustStdCode" class="form-control" />
+                <span asp-validation-for="CustStdCode" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="CustTelephone" class="control-label">Telephone</label>
+                <input asp-for="CustTelephone" class="form-control" />
+                <span asp-validation-for="CustTelephone" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="CustMobile" class="control-label">Mobile</label>
+                <input asp-for="CustMobile" class="form-control" />
+                <span asp-validation-for="CustMobile" class="text-danger"></span>
+            </div>
+    </div>
+    <br />
+    <div class="row">
+            <div class="col-md-10 form-group">
+                <label asp-for="CustEmailId" class="control-label">Mail-Id</label>
+                <input asp-for="CustEmailId" class="form-control" />
+                <span asp-validation-for="CustEmailId" class="text-danger"></span>
+            </div>
+    </div>
+    <br />
+    <div class="row">
+            <div class="col-md-4 form-group">
+                <label asp-for="CustStateCode" class="control-label">State</label>
+                    <select id="StateId" asp-for="CustStateCode" class="form-control" asp-items="ViewBag.StateList">
+                        <option value="">-- Select State --</option>
+                    </select>
+                <span asp-validation-for="CustStateCode" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="CustCityCode" class="control-label">City</label>
+                    <select id="CityId"  asp-for="CustCityCode" class="form-control">
+                    <option value="">-- Select City --</option>
+                </select>
+                <span asp-validation-for="CustCityCode" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group">
+                <label asp-for="CustBranchCode" class="control-label">Branch</label>
+                    <select id="BranchId"  asp-for="CustBranchCode" class="form-control">
+                    <option value="">-- Select Branch --</option>
+                </select>
+                <span asp-validation-for="CustBranchCode" class="text-danger"></span>
+            </div>
+    </div>
+    <br />
+    <div class="row">
+            <div class="col-md-6 form-group">
+                <label asp-for="CustAccountType" class="control-label">Account Type</label>
+                    <select asp-for="CustAccountType" class="form-control" asp-items="ViewBag.AccountTypes">
+                    <option value="">-- Select Account Type --</option>
+                </select>
+                <span asp-validation-for="CustAccountType" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                <label asp-for="CustPreferredLanguage" class="control-label">Prefered Language</label>
+                <select asp-for="CustPreferredLanguage" class="form-control" asp-items="ViewBag.LanguageList">
+                    <option value="">-- Select Language --</option>
+                </select>
+                <span asp-validation-for="CustPreferredLanguage" class="text-danger"></span>
+            </div>
+    </div>
+    <br />
+    <div class="row">
+            <div class="form-group" style="text-align:center;">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* <div class="row">
+    <a asp-action="Index" style="text-align:left;">Cancle</a>
+</div> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+
+        $(document).ready(function () {
+            // load Gender
+            $('#titleId').change(function () {
+                var selectedTitleId = $(this).val();
+                if (selectedTitleId) {
+                    $.ajax({
+                        url: '@Url.Action("GetGenderByTitle")',
+                        type: 'GET',
+                        data: { titleId: selectedTitleId },
+                        success: function (response) {
+                            if (response && response.genderId) {
+                                $('#genderId').val(response.genderId);
+                            } else {
+                                $('#genderId').val('');
+                            }
+                        },
+                        error: function () {
+                            $('#genderId').val(''); // Clear gender if there's an error
+                        }
+                    });
+                } else {
+                    $('#genderId').val('');
+                }
+            });
+
+            //Caluculate Age
+            $('#dobId').change(function () {
+                var selectedDob = $(this).val(); // Ensure date conversion
+
+                if (selectedDob >= new Date()) {
+                    alert('Please select a past Date');
+                    $(this).val(''); // Clear the invalid date
+                } else {
+                    $.ajax({
+                        url: '@Url.Action("GetAgeByDateOfBirth")',
+                        type: 'GET',
+                        data: { dob: selectedDob }, // Serialize as ISO string or other suitable format
+                        success: function (response) {
+                            if (response && response.age) {
+                                $('#ageId').val(response.age);
+                            } else {
+                                $('#ageId').val('');
+                            }
+                        },
+                        error: function () {
+                            console.error('Error fetching age');
+                            $('#ageId').val('');
+                        }
+                    });
+                }
+            });
+
+
+
+        
+            // load city names
+            $('#StateId').change(function () {
+                var stateId = $(this).val();
+                $('#CityId').empty(); // Clear previous cities
+                $('#BranchId').empty(); // Clear previous Branches
+                if (stateId) {
+                    $.ajax({
+                        url: '@Url.Action("GetCitybyStateId")',
+                        type: 'GET',
+                        data: { stateId: stateId },
+                        success: function (data) {
+                            $('#CityId').append('<option value="">--Select City--</option>');
+                            $('#BranchId').append('<option value="">--Select Branch--</option>');
+                            $.each(data, function (index, item) {
+                                $('#CityId').append('<option value="' + item.value + '">' + item.text + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#CityId').append('<option value="">--Select City--</option>');
+                    $('#BranchId').append('<option value="">--Select Branch--</option>');
+                }
+            });
+            // load branch names
+            $('#CityId').change(function () {
+                var cityId = $(this).val();
+                $('#BranchId').empty(); // Clear previous Branches
+                if (cityId) {
+                    $.ajax({
+                        url: '@Url.Action("GetBranchbyCityId")',
+                        type: 'GET',
+                        data: { cityId: cityId },
+                        success: function (data) {
+                            $('#BranchId').append('<option value="">--Select Branch--</option>');
+                            $.each(data, function (index, item) {
+                                $('#BranchId').append('<option value="' + item.value + '">' + item.text + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#BranchId').append('<option value="">--Select Branch--</option>');
+                }
+            });
+        });
+    </script>
+}
